@@ -8,7 +8,7 @@
             <div>
                 <span>欢迎你：{{ test.aname }}</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <el-button type="info" @click="logout">安全退出</el-button>
+            <el-button type="info" @click="logout" id="quit">安全退出</el-button>
             </div>
             
         </el-header>
@@ -46,7 +46,12 @@
                         </el-menu-item>
                         <el-menu-item index="2-2" >
                             <template slot="title">
-                                <span>药材订单管理</span>
+                                <span>药材库存订单管理</span>
+                            </template>
+                        </el-menu-item>
+                        <el-menu-item index="2-3" >
+                            <template slot="title">
+                                <span>药材购买订单管理</span>
                             </template>
                         </el-menu-item>
                     </el-submenu>
@@ -89,6 +94,19 @@
                         <el-menu-item index="/mtmsg" >
                             <template slot="title">
                                 <span>药材类型信息管理</span>
+                            </template>
+                        </el-menu-item>
+                    </el-submenu>
+
+                    <el-submenu index="6" >
+                        <template slot="title">
+                            <!-- <i :class="el-icon-location"></i> -->
+                            <span>健康档案模块</span>
+                        </template>
+
+                        <el-menu-item index="/mtmsg" >
+                            <template slot="title">
+                                <span>健康档案信息管理</span>
                             </template>
                         </el-menu-item>
                     </el-submenu>

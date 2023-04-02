@@ -14,8 +14,11 @@
         <el-form-item label="名称" prop="mname">
             <el-input v-model="cm.mname"></el-input>
         </el-form-item>
-        <el-form-item label="种类" prop="mtype">
-            <el-input v-model="cm.mtype"></el-input>
+        <el-form-item label="种类" prop="mtype" >
+            <el-select v-model="cm.mtype" placeholder="请选择">
+                <el-option v-for="item in options" :key="item.tName" :label="item.tName" :value="item.tName">
+                </el-option>
+            </el-select>
         </el-form-item>
         <el-form-item label="功效" prop="mwork">
             <el-input v-model="cm.mwork"></el-input>
@@ -53,6 +56,7 @@ export default {
                 minventory: '',
 
             },
+            options: [],
             rules: {
                 mname: [
                     { required: true, message: '请输入中药名称', trigger: 'blur' }
@@ -81,7 +85,13 @@ export default {
             }
         }
     },
-
+    created(){
+        var _this = this
+        axios.get('http://localhost:8081/type/getSelectType').then(function(response){
+            _this.options = response.data.list
+            console.log(_this.options)
+        })
+    },
     methods: {
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
@@ -117,4 +127,6 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
